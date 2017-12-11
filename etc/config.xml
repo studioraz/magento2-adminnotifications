@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <adminnotifications>
+            <customer_registration>
+                <copy_to></copy_to>
+                <identity>general</identity>
+                <template>adminnotifications_customer_registration_template</template>
+                <enabled>0</enabled>
+            </customer_registration>
+        </adminnotifications>
+    </default>
+</config>

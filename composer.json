@@ -1,0 +1,24 @@
+{
+    "name": "studioraz/magento2-adminnotifications",
+    "description": "Admin notifications for Magento 2",
+    "type": "magento2-module",
+    "license": [
+        "proprietary"
+    ],
+    "authors":[
+        {
+            "name":"Studio Raz",
+            "email":"dev@studioraz.co.il"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "SR\\AdminNotifications\\": ""
+        }
+    }
+}

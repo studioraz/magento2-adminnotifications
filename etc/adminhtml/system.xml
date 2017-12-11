@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="studioraz" translate="label" sortOrder="600">
+            <label>Studio Raz</label>
+        </tab>
+        <section id="adminnotifications" translate="label" type="text" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Admin Notifications</label>
+            <tab>studioraz</tab>
+            <resource>SR_AdminNotifications::config</resource>
+            <group id="customer_registration" translate="label" type="text" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>New Customer Registration</label>
+                <field id="enabled" translate="label" type="select" sortOrder="500"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Notification</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="template" translate="label comment" type="select" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="identity" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="copy_to" translate="label comment" type="text" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Recipients</label>
+                    <comment>Comma separated.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
