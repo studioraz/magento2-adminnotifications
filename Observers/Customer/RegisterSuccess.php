@@ -4,11 +4,18 @@ namespace SR\AdminNotifications\Observers\Customer;
 
 use Magento\Framework\Event\ObserverInterface;
 use SR\AdminNotifications\Model\Email\Sender\CustomerRegistrationSender;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 
 class RegisterSuccess implements ObserverInterface
 {
 
-    protected $_sender;
+    /**
+     * @var CustomerRegistrationSender
+     */
+    private $_sender;
+
+    /** @var  \Magento\Customer\Api\CustomerRepositoryInterface */
+    private $_customerRepository;
 
     public function __construct(
 
@@ -20,8 +27,11 @@ class RegisterSuccess implements ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $customer = $observer->getData('customer');
-        $this->_sender->send($customer);
+
+        /* @var $customer \Magento\Customer\Model\Data\Customer */
+        $customerData = $observer->getData('customer');
+
+        $this->_sender->send($customerData);
 
     }
 

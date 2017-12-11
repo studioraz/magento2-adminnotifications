@@ -1,8 +1,8 @@
-<!--@subject {{trans "New Customer Registration on %store_name: %customer_name" store_name=$store.getFrontendName() customer_name=$customer.name}} @-->
+<!--@subject {{trans "New Customer Registration on %store_name: %customer_name" store_name=$store.getFrontendName() customer_name=$customer_name}} @-->
 <!--@vars {
-"var customer.email":"Customer Email",
-"var customer.name":"Customer Name",
-"var customer.entity_id":"Customer Id"
+"var customer_email":"Customer Email",
+"var customer_name":"Customer Name",
+"var customer_id":"Customer Id"
 } @-->
 
 {{template config_path="design/email/header_template"}}
@@ -11,18 +11,18 @@
 <p>{{trans "New customer registered on %store_name." store_name=$store.getFrontendName()}}.</p>
 <p>{{trans "See customer information below:"}}</p>
 
-<table class="email-credentials">
+<table>
     <tr>
         <th>{{trans "Customer ID:"}}</th>
-        <td>{{var customer.entity_id}}</td>
+        <td>{{var customer_id}}</td>
     </tr>
     <tr>
-        <th>{{trans "E-mail:"}}</th>
-        <td>{{var customer.email}}</td>
+        <th>{{trans "Customer E-mail:"}}</th>
+        <td>{{var customer_email}}</td>
     </tr>
     <tr>
-        <th>{{trans "Name:"}}</th>
-        <td>{{var customer.name}}</td>
+        <th>{{trans "Customer Name:"}}</th>
+        <td>{{var customer_name}}</td>
     </tr>
 </table>
 

@@ -21,7 +21,7 @@ class CustomerRegistrationSender extends Sender
     protected $globalConfig;
 
     /**
-     * @var \Magento\Customer\Model\Customer
+     * @var \Magento\Customer\Model\Data\Customer
      */
     protected $_customer;
 
@@ -35,9 +35,10 @@ class CustomerRegistrationSender extends Sender
         parent::__construct($templateContainer, $identityContainer, $senderBuilderFactory, $logger);
     }
 
-    public function send(\Magento\Customer\Model\Customer $customer)
+    public function send(\Magento\Customer\Model\Data\Customer $customer)
     {
         $this->_customer = $customer;
+
         if ($this->checkAndSend()) {
             return true;
         }
@@ -49,20 +50,16 @@ class CustomerRegistrationSender extends Sender
     protected function prepareTemplate()
     {
         $transport = [
-            'customer' => $this->_customer,
-            'store' => $this->_customer->getStore()
+            'customer_name' => $this->_customer->getFirstname() . ' ' . $this->_customer->getLastname(),
+            'customer_id' => $this->_customer->getId(),
+            'customer_email' => $this->_customer->getEmail(),
+            'store' => $this->getStore()
         ];
         $transport = new \Magento\Framework\DataObject($transport);
 
         $this->templateContainer->setTemplateVars($transport->getData());
 
         parent::prepareTemplate();
-    }
-
-
-    protected function getStore()
-    {
-        return $this->_customer->getStore();
     }
 
 }
